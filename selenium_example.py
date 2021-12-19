@@ -18,20 +18,20 @@ with open('data.csv') as csvfile:
     csvreader = reader(csvfile, delimiter=',')
     for row in csvreader:
 
-        assert driver.find_element(*locator["contactUs_button"]).is_displayed()
-        driver.find_element(*locator["contactUs_button"]).click()
+        assert driver.find_element(*locator["contact_button"]).is_displayed()
+        driver.find_element(*locator["contact_button"]).click()
 
         assert driver.title == "Contact us - My Store"
-        select = Select(driver.find_element(*locator["subjectHeading_select"])).select_by_value("2")
+        select = Select(driver.find_element(*locator["subject_Heading"])).select_by_value("2")
 
         assert driver.find_element(*locator["email_field"]).is_displayed()
         driver.find_element(*locator["email_field"]).send_keys(row[0])
 
-        assert driver.find_element(*locator["orderReference_field"]).is_displayed()
-        driver.find_element(*locator["orderReference_field"]).send_keys(row[1])
+        assert driver.find_element(*locator["order_Reference"]).is_displayed()
+        driver.find_element(*locator["order_Reference"]).send_keys(row[1])
         
-        assert driver.find_element(*locator["message_field"]).is_displayed()
-        driver.find_element(*locator["message_field"]).send_keys(row[2])
+        assert driver.find_element(*locator["message"]).is_displayed()
+        driver.find_element(*locator["message"]).send_keys(row[2])
 
         assert driver.find_element(*locator["send_button"]).is_displayed()
         driver.find_element(*locator["send_button"]).click()
